@@ -31,22 +31,43 @@
 </div>
 
 <div class="container">
-	<div id="wdisp" class="row">
+	<div id="wdisp" >
+		<form>
+			<div class="row">
+				<i class=""></i>
+			</div>
+		<div class="row">
+			<b><input id="pic" type="text" placeholder="Description"></b>
+		</div>
+		<div class="row">
+		
 		<div class="col-lg-6">
-    <input type="text" placeholder="max temp">
+    
+			
+   <b><input id="max" type="text" placeholder="max temp"></b>
    
        </div>
 
 
 	  <div class="col-lg-6">
-
-    <input type="text" placeholder="min temp">
+<b><input id="min" type="text" placeholder="min temp"></b>
     
   </div>
+  	</form>
 </div>
-</div>
+<div class="row">
+	<div class="dropdown">
+	
+		<button id="but"  class=" btn dropbtn">GET YOUR WEATHER!</button>
+    		
+    		<div class="dropdown-content">
+    		<a  id="cel" onclick="cel()" href="#" >CELSIUS</a>
+    		<a id="far" onclick="far()" href="#">FAHRENHEIT</a>
+			</div>
 
-
-</body>
+	</div>
 </div>
-</html>
+	</div>
+	</body>
+	</div>
+	</html>

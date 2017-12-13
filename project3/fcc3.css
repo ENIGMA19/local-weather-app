@@ -26,10 +26,10 @@ body
 {
 
 	
-	color:white;
+	color:black;
 	font-size: 35px;
 	font-family: georgia;
-	opacity:1;
+	opacity:0.8;
 	letter-spacing: normal;
 
 }
@@ -51,8 +51,47 @@ body
 
 #wdisp
 {
-	margin-left:300px;
+	margin-left:350px;
 	margin-top: 200px;
 	width:500px;
 	height:400px;
+}
+#but
+{
+	margin-left:150px;
+    margin-top: 50px;
+}
+#pic
+{
+	
+	margin-left: 150px;
+	margin-bottom: 20px;
+}
+.dropdown
+{
+	 display:inline-block;
+	 
+}
+.dropdown-content
+{
+	display: none;
+	position: absolute;
+    background-color:black;
+    color:white;
+    min-width: 160px;
+ 
+  z-index: 1;
+   right:0;
+  min-width:180px;
+  text-decoration: none;
+  text-align: center;
+}
+.dropdown-content a
+{
+	display:block;
+}
+
+.dropdown:hover .dropdown-content
+{
+	display:block;
 }

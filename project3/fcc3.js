@@ -1,3 +1,5 @@
+
+     
 function displaydate()
 	{
 var d = new Date();
@@ -27,45 +29,104 @@ function checkTime(i)
 	
 }
 
-function weather()
+function cel()
 {
-var Geo={};
-if (navigator.geolocation) {
-navigator.geolocation.getCurrentPosition(success,error);
+	
+var geo={};
+ 
+if(navigator.geolocation)
+{
+    navigator.geolocation.getCurrentPosition(success,error);
 }
-else {
-alert('Geolocation is not supported');
+else
+alert("your browser does not support geolocation");
+ 
+function error()
+{
+console.log("oops cant find you!");
 }
-
-function error() {
-alert("That's weird! We couldn't find you!");
-}
-function success(position) {
-      Geo.lat = position.coords.latitude;
-      Geo.lng = position.coords.longitude;
-    			
-    			xhr = new XMLHttpRequest();
-
-	$.ajax({
+function success(pos)
+{
+ 
+geo.lat=pos.coords.latitude;
+geo.lon=pos.coords.longitude;
+xhr = new XMLHttpRequest();
+ 
+    $.ajax({
        type: "GET",
-       url: "https://simple-weather.p.mashape.com/weather?lat=Geo.lat&lng=Geo.lng",
+       url: "https://simple-weather.p.mashape.com/weatherdata?",
        dataType: "json",
+       data:{"lat":geo.lat,"lng":geo.lon},
        success: function(response) {
-           						console.log(response);
+                              document.getElementById('max').value=  (response.query.results.channel.item.forecast[0].high);
+                                  document.getElementById('min').value=(response.query.results.channel.item.forecast[0].low);
+                                  document.getElementById('pic').value=(response.query.results.channel.item.forecast[0].text);
+                             },
+             
 
-      						},
-	   error:function()
-    						{
-								alert("failed ");
-							},
+                                   
+       error:function()
+                            {
+                                alert("failed ");
+                            },
        beforeSend: setHeader
-  		 });
+         });
     
     function setHeader(xhr) 
     {
        xhr.setRequestHeader("X-Mashape-Key", "xG8gyPQ0OGmshzx9lVG4LbDefiH1p1Zme1yjsnuUmz41FcenjH");
-	}
+    }
+}
 
+}
 
-	}
+function far()
+{
+	
+var geo={};
+ 
+if(navigator.geolocation)
+{
+    navigator.geolocation.getCurrentPosition(success,error);
+}
+else
+alert("your browser does not support geolocation");
+ 
+function error()
+{
+console.log("oops cant find you!");
+}
+function success(pos)
+{
+ 
+geo.lat=pos.coords.latitude;
+geo.lon=pos.coords.longitude;
+xhr = new XMLHttpRequest();
+ 
+    $.ajax({
+       type: "GET",
+       url: "https://simple-weather.p.mashape.com/weatherdata?",
+       dataType: "json",
+       data:{"lat":geo.lat,"lng":geo.lon},
+       success: function(response) {
+                              document.getElementById('max').value=  ((((response.query.results.channel.item.forecast[0].high)*9)/5)+32);
+                                  document.getElementById('min').value=((((response.query.results.channel.item.forecast[0].low)*9)/5)+32);
+                                  document.getElementById('pic').value=(response.query.results.channel.item.forecast[0].text);
+                             },
+             
+
+                                   
+       error:function()
+                            {
+                                alert("failed ");
+                            },
+       beforeSend: setHeader
+         });
+    
+    function setHeader(xhr) 
+    {
+       xhr.setRequestHeader("X-Mashape-Key", "xG8gyPQ0OGmshzx9lVG4LbDefiH1p1Zme1yjsnuUmz41FcenjH");
+    }
+}
+
 }
